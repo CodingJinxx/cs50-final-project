@@ -1,0 +1,8 @@
+# VSCode Editor Settings
+.vscode/
+
+# Virtual Enviroment with libraries
+venv/
+
+# Flask
+flaskr/__pycache__/
