@@ -9,6 +9,8 @@ CS50-2019 Final Web Project
 `venv venv`
 3. Activate venv
 `/ProjectDir/venv/Scripts/activate.bat`
+4. Install Required Packages
+`pip install -r requirements.txt`
 
 ### Running the Website ##
 1. Set Flask Application
