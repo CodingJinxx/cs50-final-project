@@ -1,0 +1,3 @@
+-- Materialize --
+When done with Project switch to minified Version of Materialize
+
