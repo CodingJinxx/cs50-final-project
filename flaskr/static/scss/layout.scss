@@ -1,0 +1,136 @@
+$game_width: 600px;
+$game_height: 600px;
+$cell_hover: #c0bdbd;
+
+.form{
+    text-align: center;
+    margin: 0px auto;
+    width: 30%;
+}
+
+#gameContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-right: 80px;
+}
+
+#gridCanvas{
+    display: flex;
+    flex-direction: row;
+    width: $game_width;
+    height: $game_height;
+    border: 1px solid black;
+}
+
+#xNumbers{
+    align-self: flex-end;
+    width: $game_width;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    div{
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-self: flex-end;
+        flex-grow: 1;
+        div{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            ul{
+
+                list-style-type: none;
+                text-align: center;
+            }
+        }
+    }
+}
+
+#yNumbers{
+    align-self: flex-end;
+    height: $game_height;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    div{
+        display:flex;
+        flex-direction: row;
+        flex-basis: 0;
+        flex-grow: 1;
+        div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            ul{
+                list-style-type: none;
+                text-align: right;
+                margin: 0;
+                li{
+                    display: inline;
+                    margin: 0px 10px;
+                    
+                }
+                li:last-child{
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+}
+
+.rotated
+{
+
+}
+
+.gameRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.Row{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.Cell{
+    border: 1px solid black;
+    flex-grow: 1;
+}
+
+.Cell-Hover{
+    background-color: $cell_hover;
+}
+
+.Cell-X{
+    content: "";
+    display: block;
+    background-image: url("../img/X.svg");
+}
+
+.Cell-O{
+    background-color: #0a275e;
+}
+
+.Cell-Red{
+    content: "";
+    display: block;
+    background-image: url("../img/Error.png");
+}
+
+.Check-Button{
+    width: max-content;
+    align-self: center;
+    margin: 30px;
+}
+
+.Show-Button{
+    width: max-content;
+    align-self: center;
+    margin: 30px;
+}

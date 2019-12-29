@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+		<link rel="stylesheet" href="../static/css/reset.css">
+
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../static/css/layout.css" rel="stylesheet">
+
+		<link href="/static/favicon.ico" rel="icon">
+
+		<link href="/static/styles.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+		{% block head %}
+		{% endblock %}
+
+		<title>Nonogram: {% block title %}{% endblock %}</title>
+	</head>
+	<body>
+		<!--Navigation Bar-->
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="">Nonogram</a>
+			<ul class="navbar-nav d-flex flex-row-reverse">
+				<li class="nav-item"><a class="nav-link mx-1" href="/login">Login</a></li>
+				<li class="nav-item"><a class="nav-link mx-1" href="/register">Register</a></li>
+			</ul>
+		</nav>
+
+		<main class="container d-flex justify-content-center flex-column">
+			{% block main %}
+			{% endblock %}
+		</main>
+	</body>
+</html>
