@@ -28,8 +28,13 @@
 		<nav class="navbar navbar-light bg-light">
 			<a class="navbar-brand" href="">Nonogram</a>
 			<ul class="navbar-nav d-flex flex-row-reverse">
-				<li class="nav-item"><a class="nav-link mx-1" href="/login">Login</a></li>
-				<li class="nav-item"><a class="nav-link mx-1" href="/register">Register</a></li>
+				{% if current_user.is_authenticated %}
+					<li class="nav-item"><a class="nav-link mx-1" href="/level">Play</a></li>
+					<li class="nav-item"><a class="nav-link mx-1" href="/profile">Profile</a></li>
+				{% else %}
+					<li class="nav-item"><a class="nav-link mx-1" href="/login">Login</a></li>
+					<li class="nav-item"><a class="nav-link mx-1" href="/register">Register</a></li>
+				{% endif %}
 			</ul>
 		</nav>
 
