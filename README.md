@@ -17,3 +17,4 @@ CS50-2019 Final Web Project
 `set FLASK_APP=application.py`
 2. Run
 `flask run`
+fl
