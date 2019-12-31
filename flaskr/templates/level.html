@@ -2,10 +2,21 @@
 
 {% block head %}
 <script type="text/javascript" src="../static/js/game.js"></script>
+<script type="text/javascript" src="../static/js/game_over.js"></script>
 {% endblock %}
 
 {% block title %}
 Level {{ Difficulty }}
+{% endblock %}
+
+{% block overlay %}
+<div id="gameOverlay" onclick="remove_overlay()">
+    <div class="d-flex ">
+        <h1 class="mb-3" id="Result"></h1>
+        <h4 id="Additional_Info"></h3>
+        <button class="btn btn-primary" onclick="window.location.reload();">Play Again</button>
+    </div>
+</div>
 {% endblock %}
 
 {% block main %}
@@ -20,11 +31,14 @@ Level {{ Difficulty }}
         <div id="gridCanvas"></div>
     </div>
 </div>
-<div class="d-flex flex-row justify-content-center">
-    <button class="Check-Button btn btn-primary" onclick="checkGrid()">Check</button>
-    <button class="Show-Button btn btn-primary" onclick="show()">Show</button>
-</div>
 <script>    
-    generateGrid(8);
+    generateGrid(3);
 </script>
+{% endblock %}
+
+{% block stats %}
+<div class="gameStats">
+    <p id="Lives" class="my-0 mx-3 text-flicker-in">Lives: </p>
+    <p id="Cells" class="my-0 mx-3 text-flicker-in">Cells: </p>
+</div>
 {% endblock %}

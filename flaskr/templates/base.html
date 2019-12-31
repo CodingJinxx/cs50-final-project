@@ -24,13 +24,19 @@
 		<title>Nonogram: {% block title %}{% endblock %}</title>
 	</head>
 	<body>
+		{% block overlay %}
+		{% endblock %}
 		<!--Navigation Bar-->
 		<nav class="navbar navbar-light bg-light">
-			<a class="navbar-brand" href="">Nonogram</a>
-			<ul class="navbar-nav d-flex flex-row-reverse">
+			<a class="navbar-brand" href="/">Nonogram</a>
+			{% block stats %}
+			{% endblock %}
+			<ul id="navbar-class" class="navbar-nav d-flex flex-row-reverse">
 				{% if current_user.is_authenticated %}
-					<li class="nav-item"><a class="nav-link mx-1" href="/level">Play</a></li>
+					<li class="nav-item"><a class="nav-link mx-1" href="/logout">Logout</a></li>
 					<li class="nav-item"><a class="nav-link mx-1" href="/profile">Profile</a></li>
+					<li class="nav-item"><a class="nav-link mx-1" href="/leaderboard">Leaderboard</a></li>
+					<li class="nav-item"><a class="nav-link mx-4" id="play" href="/level">Play</a></li>
 				{% else %}
 					<li class="nav-item"><a class="nav-link mx-1" href="/login">Login</a></li>
 					<li class="nav-item"><a class="nav-link mx-1" href="/register">Register</a></li>

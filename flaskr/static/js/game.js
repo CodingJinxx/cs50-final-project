@@ -2,12 +2,20 @@ var Grid; // [x][y]
 var Solution; // [x][y]
 var Lives;
 var GameOver;
+var CellsLeft;
+
+function UpdateStats()
+{
+    document.getElementById("Lives").innerText = "Lives: " + Lives;
+    document.getElementById("Cells").innerText = "Cells: " + CellsLeft;
+}
 
 function generateGrid(size)
-{       
+{          
     Lives = 3;
     GameOver = false;
-
+    CellsLeft = size * size;
+    UpdateStats();
     
     Grid = createArray(size, size);
     Solution = generatePuzzle(size);
@@ -65,7 +73,7 @@ function generateGrid(size)
 
 function setCell(x, y, value)
 {
-    if(value != -2 && value != -1 && value != 0 && value != 1)
+    if(value != -2 && value != -1 && value != 0 && value != 1 && value != -3)
     {
         alert("ERROR");
         return false;
@@ -77,21 +85,23 @@ function setCell(x, y, value)
         case 1:
             toggleClass(cell, "Cell-O", true)
             toggleClass(cell, "Cell-X", false)
-            toggleClass(cell, "Cell-Red", false)
             break;
         case -1:
             toggleClass(cell, "Cell-X", true)
             toggleClass(cell, "Cell-O", false)
-            toggleClass(cell, "Cell-Red", false)
             break;
         case 0:
             toggleClass(cell, "Cell-O", false)
             toggleClass(cell, "Cell-X", false)
-            toggleClass(cell, "Cell-Red", false)
         case -2:
             toggleClass(cell, "Cell-O", false)
             toggleClass(cell, "Cell-X", false)
             toggleClass(cell, "Cell-Red", true)
+            Lives -= 1;
+            UpdateStats();
+            break;
+        case -3:
+            cell.onmousedown = null;   
             break;
     }
 }
@@ -125,6 +135,7 @@ function isCellCorrect(x,y, value)
 
 function cellClicked(event)
 {
+    toggleClass(this, "Cell-Hover", false);
     position = this.id.split("|").map(function(item)
     {
         return parseInt(item, 10);
@@ -136,6 +147,7 @@ function cellClicked(event)
             if(!isCellCorrect(position[0], position[1], 1))
             {
                 setCell(position[0], position[1], -2);
+                setCell(position[0],position[1], -1);
             }
             else
             {
@@ -144,23 +156,49 @@ function cellClicked(event)
             break;
 
         case 3: 
-            if(toggleClass(this, "Cell-X"))
+            if(!isCellCorrect(position[0], position[1], -1))
             {
-                Grid[position[0]][position[1]] = -1;
+                setCell(position[0],position[1], -2);
+                setCell(position[0],position[1], 1);
             }
             else
             {
-                Grid[position[0]][position[1]] = 0;
+                setCell(position[0],position[1], -1);
             }
-            toggleClass(this, "Cell-O", false);
             break;
         default:
     }
+    CellsLeft -= 1;
+    UpdateStats();
+    if(CellsLeft == 0 || Lives == 0)
+    {
+        game_over(Lives, CellsLeft);
+        disableCells();
+    }
+    this.onmousedown = null
+}
+function disableCells()
+{
+    for(let x = 0; x < Grid.length; x++)
+    {
+        for(let y = 0; y < Grid[0].length; y++)
+        {
+            setCell(x,y,-3);
+            
+        }
+    }
 }
 
-function cellMouseEnter()
-{
-    toggleClass(this, "Cell-Hover", true);
+function cellMouseEnter(event)
+{   
+    position = this.id.split("|").map(function(item)
+    {
+        return parseInt(item, 10);
+    });
+    if(Grid[position[0]][position[1]] == null)
+    {
+        toggleClass(this, "Cell-Hover", true);
+    }
 }
 
 function cellMouseLeave()
