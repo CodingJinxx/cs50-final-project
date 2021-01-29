@@ -25,9 +25,6 @@ When a Users plays a Game his Wins get tracked and all Users are displayed on th
 `set FLASK_APP=application.py`
 2. Run
 `flask run`
-<<<<<<< HEAD
-fl
-=======
 
 ## Features ##
 * Login System
@@ -43,4 +40,3 @@ fl
     * JQuery
     * Sass
  
->>>>>>> c0839e4b84a243a973ff8eb2cc0c86c8fd560ee4
